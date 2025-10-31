@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flatchat Archive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #25b6c4;
+      color: #fff;
+      padding: 8px 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      max-width: 520px;
+      height: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #f2b632;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .header-logo {
+        max-width: 90%;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px;
+        font-size: 1rem;
+      }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      width: 67.5%;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 0;
+    }
+
+    /* VIDEO CONTAINER */
+    .video-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 25px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      flex: 1 1 48%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex: 1;
+    }
+
+    .video-wrapper:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-title {
+      color: #333;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 8px 0;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: 95%;
+      }
+
+      .video-container {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        width: 100%;
+      }
+
+      .video-card {
+        width: 100%;
+        height: 250px;
+      }
+
+      .video-wrapper iframe {
+        height: 100%;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #25b6c4;
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer p {
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .social-links {
+      margin-top: 6px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-links img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html">
+        <img src="icons/flatchat_banner.jpg" alt="Flatchat Archive Logo" class="header-logo" />
+      </a>
+      <nav>
+        <a href="aaron.html">Aaron 'The Goat' Turnbull</a>
+        <a href="heggie.html">Heggie 'The Hog' Heggerson</a>
+        <a href="calum.html">Calum 'The Lobster' Porter</a>
+        <a href="jacob.html">Jacob 'Speccy' Murray</a>
+      </nav>
+    </div>
+  </header>
+
+  <header style="text-align: center;">
+    This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other flatchat fans. Click through the lads profiles to find their best moments.
+  </header>
+  <main>
+    <div class="video-container">
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw" allowfullscreen></iframe>
+        </div>
+        <div class="video-title">Latest YouTube Video</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw&index=2" allowfullscreen></iframe>
+        </div>
+        <div class="video-title">Previous YouTube Video</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Please support the boys at all the links below.</p>
+    <div class="social-links">
+      <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
+      <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
+      <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>
+      <a href="https://www.threads.com/@theflatchatofficial" target="_blank"><img src="icons/threads.png" alt="Threads"></a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flatchat Archive - Heggie</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #25b6c4;
+      color: #fff;
+      padding: 8px 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      max-width: 520px;
+      height: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #f2b632;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .header-logo {
+        max-width: 90%;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px;
+        font-size: 1rem;
+      }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      width: 67.5%;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #25b6c4;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #25b6c4;
+    }
+
+    .content-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    /* LEFT SIDE - PICTURE */
+    .picture-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .picture-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .picture-placeholder {
+      color: #888;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* RIGHT SIDE - CATEGORIES */
+    .categories-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      /* center the category boxes vertically within the content area */
+      justify-content: center;
+      /* keep the boxes full-width of the column */
+      align-items: stretch;
+    }
+
+    .category-box {
+      background: #25b6c4;
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      display: block;
+    }
+
+    .category-box:hover {
+      background: #1e9aa6;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: 95%;
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+      }
+
+      .picture-section {
+        min-height: 300px;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #25b6c4;
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer p {
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .social-links {
+      margin-top: 6px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-links img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links img:hover {
+      transform: scale(1.1);
+    }
+    /* CSS-only modal (uses :target) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease-in-out;
+      z-index: 1200;
+    }
+
+    /* when targeted (via fragment identifier) show it */
+    .modal:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-inner {
+      background: #fff;
+      border-radius: 10px;
+      /* base width cap (used as reference) */
+      width: min(990px, 96%);
+      /* raised max height to better fit taller video content */
+      max-height: 95vh;
+      overflow: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      padding: 18px 20px;
+      box-sizing: border-box;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 220ms ease;
+      /* two-column layout: left = text, right = video */
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .modal:target .modal-inner {
+      transform: translateY(0);
+    }
+
+    .modal-left {
+      flex: 1 1 52%;
+      min-width: 200px;
+    }
+
+    .modal-right {
+      flex: 0 0 44%;
+      min-width: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-video,
+    .modal-right iframe,
+    .modal-right video {
+      width: 100%;
+      height: 100%;
+      /* doubled the video area height from 220px -> 440px */
+      min-height: 440px;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    @media (max-width: 780px) {
+      .modal-inner {
+        flex-direction: column;
+      }
+      .modal-right {
+        width: 100%;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: #666;
+      padding: 6px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      min-height: 34px;
+      z-index: 3;
+    }
+
+    /* Back link positioned top-left */
+    .modal-back {
+      position: absolute;
+      /* position near top but leave space for header by adding top padding to the modal-inner */
+      top: 12px;
+      left: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #114047;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: transparent;
+      font-weight: 700;
+    }
+
+    /* Hover/focus styles for modal controls */
+    .modal-close,
+    .modal-back {
+      transition: background 140ms ease, transform 120ms ease, color 120ms ease;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      background: rgba(0,0,0,0.06);
+      color: #222;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .modal-back:hover,
+    .modal-back:focus {
+      background: rgba(37,182,196,0.08);
+      color: #0b4046;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* For sub-modals, push content down without affecting absolutely-positioned controls
+       (so Back/Close stay flush to the modal corner). Apply margin to the left content. */
+    .modal-inner:not(.modal-centered) .modal-left {
+      margin-top: 36px;
+    }
+
+    .modal-title {
+      margin: 0 0 8px 0;
+      font-size: 1.4rem;
+      color: #25b6c4;
+      font-weight: 700;
+    }
+
+    .modal-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-list a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f3f7f8;
+      color: #114047;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .modal-list a:hover {
+      background: #e8f4f6;
+      transform: translateY(-2px);
+    }
+    /* Centered category modal variant */
+    .modal-centered {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .modal-centered .modal-title {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-centered .modal-list {
+      align-items: center;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .modal-centered .modal-list li a {
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    /* Top-level (centered) modals: 30% less wide than base (990px * 0.7 = 693px) */
+    .modal-inner.modal-centered {
+      width: min(693px, 67.2%);
+    }
+
+    /* Second-level modals (non-centered): 30% wider than base (990px * 1.3 = 1287px)
+       Use a slightly larger viewport percentage so small viewports can expand a bit. */
+    .modal-inner:not(.modal-centered) {
+      width: min(1287px, 98%);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html">
+        <img src="icons/flatchat_banner.jpg" alt="Flatchat Archive Logo" class="header-logo" />
+      </a>
+      <nav>
+        <a href="aaron.html">Aaron 'The Goat' Turnbull</a>
+        <a href="heggie.html">Heggie 'The Hog' Heggerson</a>
+        <a href="calum.html">Calum 'The Lobster' Porter</a>
+        <a href="jacob.html">Jacob 'Speccy' Murray</a>
+      </nav>
+    </div>
+  </header>
+
+  <header style="text-align: center;">
+    This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other flatchat fans. Click through the lads profiles to find their best moments.
+  </header>
+  <main>
+    <h1 class="page-title">Heggie 'The Hog'</h1>
+    
+    <div class="content-wrapper">
+      <!-- Left side - Picture -->
+      <div class="picture-section">
+       <img src="icons/heggie.png" alt="Flatchat Heggie" class="picture-placeholder"/>
+      </div>
+
+      <!-- Right side - Categories -->
+      <div class="categories-section">
+        <a href="#modal-great-ball-knowledge" class="category-box">Great Ball Knowledge</a>
+        <a href="#modal-face-blindness" class="category-box">Face Blindness</a>
+        <a href="#modal-wild-guesses" class="category-box">Wild Guesses</a>
+        <a href="#modal-funky-forfeits" class="category-box">Funky Forfeits</a>
+        <a href="#modal-general-funnies" class="category-box">General Funnies</a>
+      </div>
+    </div>
+  </main>
+  <!-- CSS-only modals for each category -->
+  <div id="modal-great-ball-knowledge" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-great">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-great" class="modal-title">Great Ball Knowledge</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-great-1">Giussepe Meazza Who?!</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-face-blindness" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-face">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-face" class="modal-title">Face Blindness</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-face-1">Mistaken identity 1</a></li>
+        <li><a href="#modal-face-2">Mistaken identity 2</a></li>
+        <li><a href="#modal-face-3">The reveal</a></li>
+        <li><a href="#modal-face-4">Bonus clip</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-wild-guesses" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-wild">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-wild" class="modal-title">Wild Guesses</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-wild-1">Prediction #1</a></li>
+        <li><a href="#modal-wild-2">Shot in the dark</a></li>
+        <li><a href="#modal-wild-3">Wildcard moment</a></li>
+        <li><a href="#modal-wild-4">Bonus guess</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sub-modals with left text and right video area -->
+  <div id="modal-great-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-1-title">
+      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-great-1-title" class="modal-title">Giussepe Meazza Who?!</h3>
+        <h4 id="modal-great-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 25th October 2025.</p>
+        <p>In this jeopardy quiz, Aaron pulls out one of his boldest shouts yet.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="https://www.youtube.com/embed/qzswMFUqOig?start=738" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-face-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-1-title">
+      <a class="modal-back" href="#modal-face-blindness" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-face-1-title" class="modal-title">Mistaken identity 1</h3>
+        <p>Short description for mistaken identity clip #1.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-face-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-2-title">
+      <a class="modal-back" href="#modal-face-blindness" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-face-2-title" class="modal-title">Mistaken identity 2</h3>
+        <p>Short description for mistaken identity clip #2.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-face-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-3-title">
+      <a class="modal-back" href="#modal-face-blindness" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-face-3-title" class="modal-title">The reveal</h3>
+        <p>Short description for the reveal clip.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-wild-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-1-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-1-title" class="modal-title">Prediction #1</h3>
+        <p>Short description for Prediction #1.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-wild-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-2-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-2-title" class="modal-title">Shot in the dark</h3>
+        <p>Short description for Shot in the dark.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-wild-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-3-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-3-title" class="modal-title">Wildcard moment</h3>
+        <p>Short description for Wildcard moment.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <div id="modal-face-4" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-4-title">
+      <a class="modal-back" href="#modal-face-blindness" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-face-4-title" class="modal-title">Bonus clip</h3>
+        <p>Extra Face Blindness clip added as a bonus. Replace this with the real description.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-wild-4" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-4-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-4-title" class="modal-title">Bonus guess</h3>
+        <p>Extra Wild Guesses clip added as a bonus. Replace this with the real description.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Funky Forfeits category + sub-modals -->
+  <div id="modal-funky-forfeits" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-funky">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-funky" class="modal-title">Funky Forfeits</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-funky-1">Forfeit #1</a></li>
+        <li><a href="#modal-funky-2">Forfeit #2</a></li>
+        <li><a href="#modal-funky-3">Forfeit #3</a></li>
+        <li><a href="#modal-funky-4">Bonus forfeit</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-general-funnies" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-general">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-general" class="modal-title">General Funnies</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-general-1">Funny Clip #1</a></li>
+        <li><a href="#modal-general-2">Funny Clip #2</a></li>
+        <li><a href="#modal-general-3">Funny Clip #3</a></li>
+        <li><a href="#modal-general-4">Bonus funny</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sub-modals for Funky Forfeits -->
+  <div id="modal-funky-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-1-title">
+      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-funky-1-title" class="modal-title">Forfeit #1</h3>
+        <p>Short description for Forfeit #1.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-funky-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-2-title">
+      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-funky-2-title" class="modal-title">Forfeit #2</h3>
+        <p>Short description for Forfeit #2.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-funky-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-3-title">
+      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-funky-3-title" class="modal-title">Forfeit #3</h3>
+        <p>Short description for Forfeit #3.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-funky-4" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-4-title">
+      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-funky-4-title" class="modal-title">Bonus forfeit</h3>
+        <p>Short description for the bonus forfeit.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-modals for General Funnies -->
+  <div id="modal-general-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-1-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-1-title" class="modal-title">Funny Clip #1</h3>
+        <p>Short description for Funny Clip #1.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-2-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-2-title" class="modal-title">Funny Clip #2</h3>
+        <p>Short description for Funny Clip #2.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-3-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-3-title" class="modal-title">Funny Clip #3</h3>
+        <p>Short description for Funny Clip #3.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-4" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-4-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-4-title" class="modal-title">Bonus funny</h3>
+        <p>Short description for the bonus funny clip.</p>
+      </div>
+      <div class="modal-right">
+        <iframe class="modal-video" src="about:blank" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other fans.</p>
+    <div class="social-links">
+      <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
+      <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
+      <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>
+      <a href="https://www.threads.com/@theflatchatofficial" target="_blank"><img src="icons/threads.png" alt="Threads"></a>
+    </div>
+  </footer>
+</body>
+</html>
