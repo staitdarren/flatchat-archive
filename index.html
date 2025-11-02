@@ -16,7 +16,6 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
     header {
       background-color: #25b6c4;
       color: #fff;
@@ -85,47 +84,43 @@
       }
     }
 
-    /* MAIN CONTENT */
     main {
       flex: 1;
-      width: 67.5%;
+      width: 90%;
+      max-width: 1800px;
       margin: 20px auto;
-      padding: 10px 20px;
+      padding: 20px;
       background: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      min-height: 0;
+      align-items: stretch;
+      height: 80vh;
     }
 
-    /* VIDEO CONTAINER */
     .video-container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
       width: 100%;
-      margin: 0 auto;
+      height: 100%;
+      align-items: stretch;
+    }
+
+    .video-container > * {
+      height: 100%;
     }
 
     .video-card {
-      flex: 1 1 48%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      height: 60vh
     }
 
     .video-wrapper {
-      position: relative;
-      background: #000;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       flex: 1;
+      height: 100%;
     }
 
     .video-wrapper:hover {
@@ -149,29 +144,63 @@
       padding: 8px 0;
     }
 
-    @media (max-width: 900px) {
-      main {
-        width: 95%;
-      }
+    .highlights-wrapper {
+      background: #f3f7f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      height: 100%;
+    }
 
+    .highlight-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .highlight-box {
+      background: #25b6c4;
+      color: #fff;
+      border-radius: 8px;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .highlight-box:hover {
+      background: #1e9aa6;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .highlight-date {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .highlight-text {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1000px) {
       .video-container {
-        flex-direction: column;
-        height: auto;
-        gap: 15px;
-        width: 100%;
+        grid-template-columns: 1fr;
       }
-
-      .video-card {
-        width: 100%;
-        height: 250px;
-      }
-
-      .video-wrapper iframe {
-        height: 100%;
+      .highlight-boxes {
+        grid-template-columns: 1fr;
       }
     }
 
-    /* FOOTER */
     footer {
       background-color: #25b6c4;
       color: #fff;
@@ -231,6 +260,7 @@
   <header style="text-align: center;">
     This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other flatchat fans. Click through the lads profiles to find their best moments.
   </header>
+
   <main>
     <div class="video-container">
       <div class="video-card">
@@ -245,6 +275,30 @@
           <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw&index=2" allowfullscreen></iframe>
         </div>
         <div class="video-title">Previous YouTube Video</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper highlights-wrapper">
+          <div class="highlight-boxes">
+            <a href="aaron.html#modal-great-1" class="highlight-box">
+              <div class="highlight-date">2nd November 2025</div>
+              <div class="highlight-text">Giussepe Meazza Who?!</div>
+            </a>
+            <a href="aaron.html#modal-wild-5" class="highlight-box">
+              <div class="highlight-date">2nd November 2025</div>
+              <div class="highlight-text">Cardiff then?</div>
+            </a>
+            <a href="aaron.html#modal-general-7" class="highlight-box">
+              <div class="highlight-date">2nd November 2025</div>
+              <div class="highlight-text">Why are you a boat?</div>
+            </a>
+            <a href="aaron.html#modal-general-8" class="highlight-box">
+              <div class="highlight-date">2nd November 2025</div>
+              <div class="highlight-text">There's 8 pixels!!!</div>
+            </a>
+          </div>
+        </div>
+        <div class="video-title">Latest Added Highlights</div>
       </div>
     </div>
   </main>
