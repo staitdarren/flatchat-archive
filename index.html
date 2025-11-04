@@ -138,6 +138,42 @@
       display: block;
     }
 
+    /* Video placeholder - shows while iframe loads */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .video-placeholder::before {
+      content: "▶";
+      font-size: 4rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .video-wrapper {
+      position: relative;
+    }
+
+    .video-wrapper iframe {
+      position: relative;
+      z-index: 1;
+    }
+
     .video-title {
       color: #333;
       font-size: 1.1rem;
@@ -267,14 +303,16 @@
     <div class="video-container">
       <div class="video-card">
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw" allowfullscreen></iframe>
+          <div class="video-placeholder">Loading video...</div>
+          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-title">Latest YouTube Video</div>
       </div>
 
       <div class="video-card">
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw&index=2" allowfullscreen></iframe>
+          <div class="video-placeholder">Loading video...</div>
+          <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUsbTYAXEzY0ZSeEAcThVWDw&index=2" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-title">Previous YouTube Video</div>
       </div>

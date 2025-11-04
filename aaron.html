@@ -390,6 +390,49 @@
       background: #000;
     }
 
+    /* Optimize iframe loading - prevent loading until modal is visible */
+    /* Iframes with empty src don't load until src is set */
+    .modal:not(:target) .modal-video {
+      display: none;
+    }
+
+    .modal:target .modal-video {
+      display: block;
+    }
+
+    /* Video placeholder - shows before iframe loads */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .video-placeholder::before {
+      content: "▶";
+      font-size: 4rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .modal:target .video-placeholder {
+      display: none;
+    }
+
+    .modal:not(:target) .video-placeholder {
+      display: flex;
+    }
+
     @media (max-width: 780px) {
       .modal-inner {
         flex-direction: column;
@@ -614,7 +657,8 @@
         <p>In this jeopardy quiz, Aaron pulls out one of his boldest shouts yet.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/qzswMFUqOig?start=738" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/qzswMFUqOig?start=738" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -631,7 +675,8 @@
         <p>In this career path bonanza, Aaron demonstrates his insane ball knowledge bringing an obscure player and his career path.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/YKvFqFrWnZc?start=1807" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/YKvFqFrWnZc?start=1807" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -647,7 +692,8 @@
         <p>In this career path edition, Aaron makes Calum and Jacob show their orgasm faces on camera and Heggie notices Aaron's excitement after this OUTRAGEOUS shout from the GOAT.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/fowrLx586Io?start=1015" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/fowrLx586Io?start=1015" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -662,7 +708,8 @@
         <p>During this Football 1% club the boys rely on Aaron's old school football knowledge to get them through this question.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/7no5Md-e9uI?start=781" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/7no5Md-e9uI?start=781" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -677,7 +724,8 @@
         <p>During a mash-up of Tension/Pressure/Jeopardy, the boys are stumped on this difficult Jeopardy 4 point question, but Aaron is just the GOAT isn't he?.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/X9uYoQuZKYY?start=1847" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/X9uYoQuZKYY?start=1847" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -704,7 +752,8 @@
         <p>In this face blindness quiz, Aaron makes a comment about a players square head and compares him to a certain YouTuber.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1773" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1773" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -719,7 +768,8 @@
         <p>During an episode of Football Pointless the lads have to name the manager by picture. Aaron is sure it's one of two and goes with Poch.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/IryV95i2nks?start=482" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/IryV95i2nks?start=482" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -761,7 +811,8 @@
         <p>In this tension quiz, Aaron may have needed some reading glasses as he gives a wild shout for this Nation WC appearances question.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/oVz1b-ULsJs?start=590" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/oVz1b-ULsJs?start=590" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -777,7 +828,8 @@
         <p>During this world's hardest quiz, Aaron puts out a bold statement regarding these Belgian clubs.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/8tuoOnzcYwk?start=360" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/8tuoOnzcYwk?start=360" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -793,7 +845,8 @@
         <p>On a viewers GUESS WHO quiz, Aaron makes a bizarre guess at this 32 year olds who am I section.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/w6yu1PVfqbg?start=266" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/w6yu1PVfqbg?start=266" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -809,7 +862,8 @@
         <p>In this PL tension quiz, Aaron goes for a risky call on this Top UK Scorers in the 24/25 PL with a shout for a guy with 0 goals.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/f_Idb1GuYjM?start=345" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/f_Idb1GuYjM?start=345" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -825,7 +879,8 @@
         <p>In this face blindness quiz, Aaron finally gets a player right but when he has to name the most named club? The GOAT only goes and names a team he never even played for.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1318" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1318" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -841,7 +896,8 @@
         <p>In this classic episode of Pointless, Aaron creates the greatest meme of all time.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ijeKLtofRvo?start=1200" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ijeKLtofRvo?start=1200" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -856,7 +912,8 @@
         <p>In this members only video, during a round of answer smash, Aaron pulls this bizarre answer out to the lads delight.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/OH6SbJ_ddyw?start=2241" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/OH6SbJ_ddyw?start=2241" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -871,7 +928,8 @@
         <p>After Calum correctly guesses the Newcastle blurred player in this Jeopardy battle, he goes over his thinking process before Aaron blurts out a wild shout!</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=211" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=211" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -886,7 +944,8 @@
         <p>After revealing their next player is from the Americas, Jacob asks about Canadian players. Aaron the GOAT makes a bold shout for who the canadian should be.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/nxRJO7fQvP4?start=1565" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/nxRJO7fQvP4?start=1565" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -901,7 +960,8 @@
         <p>In this Football Jeopardy Aaron somehow gets awarded points for answering David Beckham for the category "One club men"</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ybckX-VIQlg?start=1180" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ybckX-VIQlg?start=1180" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -916,7 +976,8 @@
         <p>For the jeopardy question involving a certain Man United captain, Aaron pulls out this wild shout that leaves the boys STUNNED.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ezS9_zDYncI?start=2169" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ezS9_zDYncI?start=2169" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -931,7 +992,8 @@
         <p>In this BIG FAT QUIZ OF THE YEAR, the lads are asked how tall is the tallest woman in the world? Aaron never change buddy.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/7IbakLo2TpI?start=2334" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/7IbakLo2TpI?start=2334" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -946,7 +1008,8 @@
         <p>In this 60 seconds challenge, Aaron has to name french players for Arsenal, however he gets his tongue in a twist between these 2 Arsenal icons.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/iTmvhgnQ1fM?start=1176" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/iTmvhgnQ1fM?start=1176" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -962,7 +1025,8 @@
         <p>Contributed by Maule13.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/fJzXnUZFZFg?start=3077" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/fJzXnUZFZFg?start=3077" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -977,7 +1041,8 @@
         <p>In this BIG FAT QUIZ OF THE YEAR, Aaron puts down a questionable answer regarding a players age.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/YQbAy14ZSpA?start=751" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/YQbAy14ZSpA?start=751" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -992,7 +1057,8 @@
         <p>In this BIG FAT QUIZ OF THE YEAR, Aaron puts down an answer that only Aaron could think of.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/YQbAy14ZSpA?start=2091" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/YQbAy14ZSpA?start=2091" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1007,7 +1073,8 @@
         <p>In this 1% club video, Aaron is hosting and somehow doesn't know the correct answers to his own question???</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/IrW0OmojIK0?start=959" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/IrW0OmojIK0?start=959" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1036,7 +1103,8 @@
         <p>After this OG Football Jeopardy video, Jacob reigns supreme and gets to red arse the other lads, CHAOS ensues.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/mg3u3u9HQ_k?start=2267" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/mg3u3u9HQ_k?start=2267" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1051,7 +1119,8 @@
         <p>After losing in this OG football tenable video: Calum, Aaron and Jacob must face the forfiet, which this time is wax strips to the legs, hilarity ensues.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/S9pE1V55XPg?start=1643" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/S9pE1V55XPg?start=1643" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1066,7 +1135,8 @@
         <p>After losing in Tic-Tac-Toe, Jacob must withstand a red arse from Aaron, but it doesn't go as planned for either party.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=348" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=348" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1081,7 +1151,8 @@
         <p>After losing in Tic-Tac-Toe, the boys cook up a concotion that Aaron must drink.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=589" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=589" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1096,7 +1167,8 @@
         <p>After losing in Tic-Tac-Toe again, Aaron must sing as his forfeit, Shania Twain eat your heart out.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=1108" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=1108" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1141,7 +1213,8 @@
         <p>In this funky prize tower football quiz, Aaron repeats a certain ex Burnley players name in a peculiar way???</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/si8sw_4ytAI?start=1865" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/si8sw_4ytAI?start=1865" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1157,7 +1230,8 @@
         <p>In a chaotic Rondo episode, Aaron the host gets his question a bit wrong around a nationality of a certain Bayern manager.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/8jSUsUYsb-o?start=815" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/8jSUsUYsb-o?start=815" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1173,7 +1247,8 @@
         <p>In this wild Football tenable video, Aaron starts off with a bang with what can only be described as "top tier content"</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/CQudqcFGxaU?start=55" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/CQudqcFGxaU?start=55" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1189,7 +1264,8 @@
         <p>Aaron recalls his favourite 0-0, 0-0 result.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/x5_h4iEN2Nc?start=1518" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/x5_h4iEN2Nc?start=1518" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1205,7 +1281,8 @@
         <p>Aaron invents a new dance move during this Jeopardy quiz.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/GJ6Pm4JkLa8?start=650" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/GJ6Pm4JkLa8?start=650" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1221,7 +1298,8 @@
         <p>Aaron in one of the most chaotic videos of all times forgets to put the loans into the career path causing this meltdown from Heggie followed by a hilarious comeback from Aaron.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ljKecGd7Kqk?start=760" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ljKecGd7Kqk?start=760" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1237,7 +1315,8 @@
         <p>While giving their team name at the start of this viewer submitted quiz, Calum asks a very important question, however no-one was expecting Aaron's response.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/pBpyZNk_iE8?start=89" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/pBpyZNk_iE8?start=89" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
     
@@ -1253,7 +1332,8 @@
         <p>Having to recreate this famous WC goal, Aaron's final image reveal leaves everyone in tears.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Ow_nQrxudZs?start=1175" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/Ow_nQrxudZs?start=1175" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1268,7 +1348,8 @@
         <p>Having guessed an incorrect player in this Draft challenge, Aaron's fate is in the hands of the other lads to pick him a forfeit player. His reaction was priceless.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ASvCoER9xqc?start=394" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ASvCoER9xqc?start=394" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1283,7 +1364,8 @@
         <p>Hungary score in a decisive Euro 2024 group game for Scotland. Aaron doesn't respond well.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/LL4237AXZC8?start=790" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/LL4237AXZC8?start=790" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1298,7 +1380,8 @@
         <p>Aaron on the hunt for his first ever tic-tac-toe victory has the win in his sights, but what does Heggie do to the GOAT?</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/QclLtMY-sgU?start=1095" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/QclLtMY-sgU?start=1095" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1313,7 +1396,8 @@
         <p>In an old school classic, Aaron brings a tenable round where all but 4 possible answers are the same amount?!</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/A3_-tFf58Vg?start=202" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/A3_-tFf58Vg?start=202" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1328,7 +1412,8 @@
         <p>In this unique logic puzzle video, the boys finally make their way through it. But, Jacob makes a revelation about what Aaron has been doing when making "Notes".</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/nxRJO7fQvP4?start=3092" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/nxRJO7fQvP4?start=3092" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div> 
@@ -1343,7 +1428,8 @@
         <p>On his quest to get the boys 3 more points in this viewers World's Hardest Quiz, Aaron does something unspeakable, the kit comes OFF!</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Nye7Ru1Prc4?start=1895" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/Nye7Ru1Prc4?start=1895" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1358,7 +1444,8 @@
         <p>After suffering an injury prior in this IRL football challenges video Heggie makes a comment about Aaron's skills but the GOAT hits back with this HILARIOUS one liner.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/PINaTdSft0I?start=926" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/PINaTdSft0I?start=926" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1374,7 +1461,8 @@
         <p>Contributed by Maule13.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/fJzXnUZFZFg?start=1172" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/fJzXnUZFZFg?start=1172" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1389,7 +1477,8 @@
         <p>In this football transfers quiz, Aaron is struggling with the answer, but Jacob isn't, what Aaron does next will leave you shocked.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/a3WJPjdefH0?start=740" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/a3WJPjdefH0?start=740" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1404,7 +1493,8 @@
         <p>In this killer draft, Aaron is too slow to write down his killer causing a meltdown by the GOAT.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/XKoXwlwPS8U?start=1573" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/XKoXwlwPS8U?start=1573" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1419,7 +1509,8 @@
         <p>The boys guess a teeny tiny little man for this career path round, the picture of the player causes HYSTERICS afterwards.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/kKugIDT6670?start=1454" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/kKugIDT6670?start=1454" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>

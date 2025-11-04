@@ -370,6 +370,48 @@
       background: #000;
     }
 
+    /* Optimize iframe loading - prevent loading until modal is visible */
+    .modal:not(:target) .modal-video {
+      display: none;
+    }
+
+    .modal:target .modal-video {
+      display: block;
+    }
+
+    /* Video placeholder - shows before iframe loads */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .video-placeholder::before {
+      content: "▶";
+      font-size: 4rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .modal:target .video-placeholder {
+      display: none;
+    }
+
+    .modal:not(:target) .video-placeholder {
+      display: flex;
+    }
+
     @media (max-width: 780px) {
       .modal-inner {
         flex-direction: column;
@@ -586,7 +628,8 @@
         <p>In this WORLDS HARDEST QUIZ, Jacob shocks all the other lads with this nonchalant answer to one of the hardest missing vowel questions we've ever seen.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/qyio_fJ6av4?start=1308" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/qyio_fJ6av4?start=1308" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -614,7 +657,8 @@
         <p>In this Face Blindness quiz, Jacob and Heggie have no idea who this active PL footballer is although that didn't stop them mocking him at Calum's expense.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1618" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1618" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -630,7 +674,8 @@
         <p>In this Face Blindness quiz, Jacob makes a remark that a certain player looks like Phil Foden, much to Heggie's disgust.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=2172" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=2172" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -657,7 +702,8 @@
         <p>During a Face Blindness Quiz, Heggie and Jacob are certain this player HAS to have played the most for West Brom.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1766" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1766" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -672,7 +718,8 @@
         <p>Despite not appearing in the video, Jacob produced the worst shout of the episode in this football pointless.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/JrYLcbFQBAc?start=667" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/JrYLcbFQBAc?start=667" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -699,7 +746,8 @@
         <p>After losing in this OG football tenable video: Calum, Aaron and Jacob must face the forfiet, which this time is wax strips to the legs, hilarity ensues.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/S9pE1V55XPg?start=1643" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/S9pE1V55XPg?start=1643" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -714,7 +762,8 @@
         <p>After losing in Tic-Tac-Toe, Jacob must withstand a red arse from Aaron, but it doesn't go as planned for either party.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=348" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=348" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -745,7 +794,8 @@
         <p>This Rondo can't stop Jacob releasing some hot zingers about this Nigerian winger.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/e8dj8eqP__M?start=808" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/e8dj8eqP__M?start=808" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -761,7 +811,8 @@
         <p>In this exquisite jeopardy quiz, Jacob goes a bit off the rails and turns into a TikTok trend.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/WA9-7-oMNko?start=1231" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/WA9-7-oMNko?start=1231" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -778,7 +829,8 @@
         <p>Jacob spins the wheel in this draft challenge and starts making some accusations regarding Bayern and a certain regime.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/b1HKXC-lfpA?start=1025" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/b1HKXC-lfpA?start=1025" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -794,7 +846,8 @@
         <p>In this top tier editing moment, Jacob releases the mother of all sneezes that may or may not have caused his hoodie to dissolve.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=1356" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=1356" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -809,7 +862,8 @@
         <p>Things get a bit spicy between Jacob and Heggie in this Who wants to be a Millionaire episode.</p>
       </div>
       <div class="modal-right">
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ycx-sXO_FUU?start=629" title="Video placeholder" frameborder="0" allowfullscreen></iframe>
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ycx-sXO_FUU?start=629" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
