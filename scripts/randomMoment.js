@@ -35,7 +35,8 @@ if (randomMomentBtn) {
       "aaron.html#modal-wild-16", "aaron.html#modal-wild-17", "aaron.html#modal-wild-18",
       "aaron.html#modal-wild-19", "aaron.html#modal-wild-20", "aaron.html#modal-wild-21", 
       "aaron.html#modal-wild-22", "aaron.html#modal-wild-23", "aaron.html#modal-wild-24",
-
+      "aaron.html#modal-wild-25",
+      
       // --- Heggie ---
       "heggie.html#modal-funky-1",
 
