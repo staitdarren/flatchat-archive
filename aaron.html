@@ -290,6 +290,11 @@
       padding: 10px 15px;
       font-size: 0.9rem;
       box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     footer p {
@@ -322,6 +327,52 @@
     .social-links img:hover {
       transform: scale(1.1);
     }
+
+    /* Default: desktop view */
+    .footer-random {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    #randomMomentBtn {
+      background: #f5f5f5;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #randomMomentBtn:hover {
+      transform: rotate(15deg) scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #randomMomentBtn img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* ✅ Mobile view: place button below text, centered */
+    @media (max-width: 768px) {
+      .footer-random {
+        position: static; /* no absolute positioning */
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+      }
+
+      #randomMomentBtn img {
+        width: 42px; /* slightly smaller on mobile */
+        height: 42px;
+      }
+    }
+
     /* CSS-only modal (uses :target) */
     .modal {
       position: fixed;
@@ -818,6 +869,9 @@
         <li><a href="#modal-wild-15">You think he's 50?!</a></li>
         <li><a href="#modal-wild-16">It's literally impossible...</a></li>
         <li><a href="#modal-wild-17">Dwight Yorke has won it.</a></li>
+        <li><a href="#modal-wild-18">We'll move on from that.</a></li>
+        <li><a href="#modal-wild-19">Where's he from Aaron?</a></li>
+        <li><a href="#modal-wild-20">Who?!?! The right back?!?!</a></li>
       </ul>
     </div>
   </div>
@@ -1100,6 +1154,54 @@
       </div>
     </div>
   </div>
+  <div id="modal-wild-18" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-18-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-18-title" class="modal-title">We'll move on from that.</h3>
+        <h4 id="modal-wild-18-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 17th March 2025.</p>
+        <p>In this House of Games viewer submission, Aaron's guess has to be CENSORED it's so wild!!!</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/omyyQwDKe18?start=1042" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-wild-19" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-19-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-19-title" class="modal-title">Where's he from Aaron?</h3>
+        <h4 id="modal-wild-19-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 12th August 2025.</p>
+        <p>Another Jeopardy, another Aaron GOATed moment, Haaland is the answer but what was the question Aaron?</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ibj1CmnVljs?start=1782" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-wild-20" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-20-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-20-title" class="modal-title">Who?!?! The right back?!?!</h3>
+        <h4 id="modal-wild-20-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 12th August 2025.</p>
+        <p>Another moment from this Jeopardy ep, Aaron thinks what Right Back cost 40m?</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ibj1CmnVljs?start=148" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
 
   <div id="modal-funky-forfeits" class="modal" aria-hidden="true">
     <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-funky">
@@ -1257,6 +1359,8 @@
         <li><a href="#modal-general-21">It's literally Washington comma DC.</a></li> 
         <li><a href="#modal-general-22">Jacob's missing 2 of his 4 eyes.</a></li> 
         <li><a href="#modal-general-23">How about Zidane?</a></li> 
+        <li><a href="#modal-general-24">Read it out then!</a></li> 
+        <li><a href="#modal-general-25">You got it the wrong way round man!</a></li> 
       </ul>
     </div>
   </div>
@@ -1638,6 +1742,38 @@
       </div>
     </div>
   </div>
+  <div id="modal-general-24" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-24-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-24-title" class="modal-title">Read it out then!</h3>
+        <h4 id="modal-general-24-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 10th June 2025.</p>
+        <p>Aaron hosts this jeopardy and he drops a howler on this Name that Trophy category, literally leaving the name of the trophy on the image!</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/yysUQhoS0UI?start=362" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-25" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-25-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-25-title" class="modal-title">You got it the wrong way round man!</h3>
+        <h4 id="modal-general-25-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 10th June 2025.</p>
+        <p>Aaron messes up another one of the rounds as he makes it impossible for the boys on this one!</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/yysUQhoS0UI?start=2040" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p>Please support the boys at all the links below.</p>
@@ -1652,29 +1788,15 @@
     </div>
     <p>Site made by Darren 'Unico'</p>
     <p>Thanks to the following members from the Members-Only Discord for top-tier flatchat moment contributions: Maule13, Tradiac</p>
+  <div class="footer-random">
+      <button id="randomMomentBtn">
+        <img src="icons/randomiser.png" alt="Random Moment" />
+      </button>
+  </div>
   </footer>
 
-<script>
-document.addEventListener('click', e => {
-  if (e.target.matches('.modal-close, .modal-back')) {
-    const modal = e.target.closest('.modal');
-    modal?.querySelectorAll('iframe.modal-video').forEach(frame => {
-      if (!frame.dataset.src) frame.dataset.src = frame.src;
-      frame.src = '';
-    });
-  }
-  if (e.target.matches('a[href^="#modal-"]')) {
-    setTimeout(() => {
-      const hash = location.hash;
-      const modal = document.querySelector(hash);
-      modal?.querySelectorAll('iframe.modal-video').forEach(frame => {
-        if (frame.dataset.src && frame.src !== frame.dataset.src)
-          frame.src = frame.dataset.src;
-      });
-    }, 150);
-  }
-});
-</script>
+<script src="scripts/modal-auto-stop-video.js"></script>
+<script src="scripts/randomMoment.js"></script>
 
 </body>
 </html>

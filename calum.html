@@ -261,7 +261,7 @@
       }
     }
 
-    /* FOOTER */
+     /* FOOTER */
     footer {
       background-color: #25b6c4;
       color: #fff;
@@ -269,6 +269,11 @@
       padding: 10px 15px;
       font-size: 0.9rem;
       box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     footer p {
@@ -301,6 +306,52 @@
     .social-links img:hover {
       transform: scale(1.1);
     }
+
+    /* Default: desktop view */
+    .footer-random {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    #randomMomentBtn {
+      background: #f5f5f5;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #randomMomentBtn:hover {
+      transform: rotate(15deg) scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #randomMomentBtn img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* ✅ Mobile view: place button below text, centered */
+    @media (max-width: 768px) {
+      .footer-random {
+        position: static; /* no absolute positioning */
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+      }
+
+      #randomMomentBtn img {
+        width: 42px; /* slightly smaller on mobile */
+        height: 42px;
+      }
+    }
+
     /* CSS-only modal (uses :target) */
     .modal {
       position: fixed;
@@ -682,6 +733,7 @@
       <ul class="modal-list">
         <li><a href="#modal-wild-1">You're going Brazil?!</a></li>
         <li><a href="#modal-wild-2">Why don't you pick players you know?!?!?!?!</a></li>
+        <li><a href="#modal-wild-3">That wasn't a world cup year!</a></li>
       </ul>
     </div>
   </div>
@@ -713,6 +765,21 @@
       <div class="modal-right">
         <div class="video-placeholder">Loading video...</div>
         <iframe class="modal-video" src="https://www.youtube.com/embed/CrCLeAzhyMo?start=663" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-wild-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-3-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-3-title" class="modal-title">That wasn't a world cup year!</h3>
+        <p>Released on the 10th June 2025.</p>
+        <p>This football jeopardy gets Calum all confused and he gives this WOEFUL answer, leaving the other boys in stitches!</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/yysUQhoS0UI?start=1404" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -891,29 +958,15 @@
     </div>
     <p>Site made by Darren 'Unico'</p>
     <p>Thanks to the following members from the Members-Only Discord for top-tier flatchat moment contributions: Maule13, Tradiac</p>
+  <div class="footer-random">
+      <button id="randomMomentBtn">
+        <img src="icons/randomiser.png" alt="Random Moment" />
+      </button>
+  </div>
   </footer>
 
-<script>
-document.addEventListener('click', e => {
-  if (e.target.matches('.modal-close, .modal-back')) {
-    const modal = e.target.closest('.modal');
-    modal?.querySelectorAll('iframe.modal-video').forEach(frame => {
-      if (!frame.dataset.src) frame.dataset.src = frame.src;
-      frame.src = '';
-    });
-  }
-  if (e.target.matches('a[href^="#modal-"]')) {
-    setTimeout(() => {
-      const hash = location.hash;
-      const modal = document.querySelector(hash);
-      modal?.querySelectorAll('iframe.modal-video').forEach(frame => {
-        if (frame.dataset.src && frame.src !== frame.dataset.src)
-          frame.src = frame.dataset.src;
-      });
-    }, 150);
-  }
-});
-</script>
+<script src="scripts/modal-auto-stop-video.js"></script>
+<script src="scripts/randomMoment.js"></script>
 
 </body>
 </html>
