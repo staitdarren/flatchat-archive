@@ -9,7 +9,7 @@ if (randomMomentBtn) {
       "aaron.html#modal-great-4", "aaron.html#modal-great-5", "aaron.html#modal-great-6",
 
       "aaron.html#modal-face-1", "aaron.html#modal-face-2", "aaron.html#modal-face-3",
-      "aaron.html#modal-face-4", "aaron.html#modal-face-5",
+      "aaron.html#modal-face-4", "aaron.html#modal-face-5", "aaron.html#modal-face-6",
 
       "aaron.html#modal-funky-1", "aaron.html#modal-funky-2", "aaron.html#modal-funky-3",
       "aaron.html#modal-funky-4", "aaron.html#modal-funky-5", "aaron.html#modal-funky-6",
