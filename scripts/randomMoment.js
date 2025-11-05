@@ -42,7 +42,7 @@ if (randomMomentBtn) {
 
       "heggie.html#modal-face-1",
 
-      "heggie.html#modal-wild-1", "heggie.html#modal-wild-2", "heggie.html#modal-wild-3"
+      "heggie.html#modal-wild-1", "heggie.html#modal-wild-2", "heggie.html#modal-wild-3",
 
       "heggie.html#modal-great-1", "heggie.html#modal-great-2",
 
