@@ -11,6 +11,7 @@ if (randomMomentBtn) {
       
       "aaron.html#modal-face-1", "aaron.html#modal-face-2", "aaron.html#modal-face-3",
       "aaron.html#modal-face-4", "aaron.html#modal-face-5", "aaron.html#modal-face-6",
+      "aaron.html#modal-face-7",
 
       "aaron.html#modal-funky-1", "aaron.html#modal-funky-2", "aaron.html#modal-funky-3",
       "aaron.html#modal-funky-4", "aaron.html#modal-funky-5", "aaron.html#modal-funky-6",
@@ -63,7 +64,8 @@ if (randomMomentBtn) {
       "calum.html#modal-wild-1", "calum.html#modal-wild-2", "calum.html#modal-wild-3",
 
       "calum.html#modal-general-1", "calum.html#modal-general-2", "calum.html#modal-general-3",
-      "calum.html#modal-general-4", "calum.html#modal-general-5",
+      "calum.html#modal-general-4", "calum.html#modal-general-5", "calum.html#modal-general-6",
+      "calum.html#modal-general-7",
       
       // --- Jacob ---
       "jacob.html#modal-general-1", "jacob.html#modal-general-2", "jacob.html#modal-general-3",
