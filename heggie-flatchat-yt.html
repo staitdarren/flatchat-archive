@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flatchat Archive - Heggie</title>
+  <link rel="icon" type="image/x-icon" href="icons/flatchat-small.webp">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #25b6c4;
+      color: #fff;
+      padding: 8px 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      max-width: 520px;
+      height: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #f2b632;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .header-logo {
+        max-width: 90%;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px;
+        font-size: 1rem;
+      }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      width: 67.5%;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #25b6c4;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #25b6c4;
+    }
+
+    .content-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    /* LEFT SIDE - GALLERY */
+    .picture-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      height: 520px;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      height: 100%;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Hide radio buttons */
+    .gallery-radio {
+      display: none;
+    }
+
+    .gallery-slides {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: block;
+    }
+
+    .gallery-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Show slide when corresponding radio is checked */
+    #slide1:checked ~ .gallery-slides .slide1,
+    #slide2:checked ~ .gallery-slides .slide2 {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Arrow styling */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(37, 182, 196, 0.8);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      user-select: none;
+      right: 10px;
+    }
+
+    .gallery-arrow:hover {
+      background: rgba(37, 182, 196, 1);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    /* Single Next button: only show the correct target per slide */
+    .arrow-next { display: none; }
+    #slide1:checked ~ .arrow-next.from1 { display: flex; }
+    #slide2:checked ~ .arrow-next.from2 { display: flex; }
+
+    /* RIGHT SIDE - CATEGORIES */
+    .categories-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      /* center the category boxes vertically within the content area */
+      justify-content: center;
+      /* keep the boxes full-width of the column */
+      align-items: stretch;
+    }
+
+    .category-box {
+      background: #25b6c4;
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      display: block;
+    }
+
+    .category-box:hover {
+      background: #1e9aa6;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: 95%;
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+      }
+
+      .picture-section {
+        height: 400px;
+        flex: 0 0 auto;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #25b6c4;
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer p {
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .social-links {
+      margin-top: 6px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-links img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Default: desktop view */
+    .footer-random {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    #randomMomentBtn {
+      background: #f5f5f5;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #randomMomentBtn:hover {
+      transform: rotate(15deg) scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #randomMomentBtn img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* ✅ Mobile view: place button below text, centered */
+    @media (max-width: 768px) {
+      .footer-random {
+        position: static; /* no absolute positioning */
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+      }
+
+      #randomMomentBtn img {
+        width: 42px; /* slightly smaller on mobile */
+        height: 42px;
+      }
+    }
+
+    /* CSS-only modal (uses :target) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease-in-out;
+      z-index: 1200;
+    }
+
+    /* when targeted (via fragment identifier) show it */
+    .modal:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-inner {
+      background: #fff;
+      border-radius: 10px;
+      /* base width cap (used as reference) */
+      width: min(990px, 96%);
+      /* raised max height to better fit taller video content */
+      max-height: 95vh;
+      overflow: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      padding: 18px 20px;
+      box-sizing: border-box;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 220ms ease;
+      /* two-column layout: left = text, right = video */
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .modal:target .modal-inner {
+      transform: translateY(0);
+    }
+
+    .modal-left {
+      flex: 1 1 52%;
+      min-width: 200px;
+    }
+
+    .modal-right {
+      flex: 0 0 44%;
+      min-width: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-video,
+    .modal-right iframe,
+    .modal-right video {
+      width: 100%;
+      height: 100%;
+      /* doubled the video area height from 220px -> 440px */
+      min-height: 440px;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    /* Optimize iframe loading - prevent loading until modal is visible */
+    .modal:not(:target) .modal-video {
+      display: none;
+    }
+
+    .modal:target .modal-video {
+      display: block;
+    }
+
+    /* Video placeholder - shows before iframe loads */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .video-placeholder::before {
+      content: "▶";
+      font-size: 4rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .modal:target .video-placeholder {
+      display: none;
+    }
+
+    .modal:not(:target) .video-placeholder {
+      display: flex;
+    }
+
+    @media (max-width: 780px) {
+      .modal-inner {
+        flex-direction: column;
+      }
+      .modal-right {
+        width: 100%;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: #666;
+      padding: 6px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      min-height: 34px;
+      z-index: 3;
+    }
+
+    /* Back link positioned top-left */
+    .modal-back {
+      position: absolute;
+      /* position near top but leave space for header by adding top padding to the modal-inner */
+      top: 12px;
+      left: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #114047;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: transparent;
+      font-weight: 700;
+    }
+
+    /* Hover/focus styles for modal controls */
+    .modal-close,
+    .modal-back {
+      transition: background 140ms ease, transform 120ms ease, color 120ms ease;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      background: rgba(0,0,0,0.06);
+      color: #222;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .modal-back:hover,
+    .modal-back:focus {
+      background: rgba(37,182,196,0.08);
+      color: #0b4046;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* For sub-modals, push content down without affecting absolutely-positioned controls
+       (so Back/Close stay flush to the modal corner). Apply margin to the left content. */
+    .modal-inner:not(.modal-centered) .modal-left {
+      margin-top: 36px;
+    }
+
+    .modal-title {
+      margin: 0 0 8px 0;
+      font-size: 1.4rem;
+      color: #25b6c4;
+      font-weight: 700;
+    }
+
+    .modal-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-list a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f3f7f8;
+      color: #114047;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .modal-list a:hover {
+      background: #e8f4f6;
+      transform: translateY(-2px);
+    }
+    /* Centered category modal variant */
+    .modal-centered {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .modal-centered .modal-title {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-centered .modal-list {
+      align-items: center;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .modal-centered .modal-list li a {
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    /* Top-level (centered) modals: 30% less wide than base (990px * 0.7 = 693px) */
+    .modal-inner.modal-centered {
+      width: min(693px, 67.2%);
+    }
+
+    /* Second-level modals (non-centered): 30% wider than base (990px * 1.3 = 1287px)
+       Use a slightly larger viewport percentage so small viewports can expand a bit. */
+    .modal-inner:not(.modal-centered) {
+      width: min(1287px, 98%);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html">
+        <img src="icons/flatchat_banner.jpg" alt="Flatchat Archive Logo" class="header-logo" />
+      </a>
+      <nav>
+        <a href="aaron.html">Aaron 'The Goat' Turnbull</a>
+        <a href="heggie.html">Heggie 'The Hog' Heggerson</a>
+        <a href="calum.html">Calum 'The Lobster' Porter</a>
+        <a href="jacob.html">Jacob 'Speccy' Murray</a>
+      </nav>
+    </div>
+  </header>
+
+  <header style="text-align: center;">
+    This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other flatchat fans. Click through the lads profiles to find their best moments.
+  </header>
+  <main>
+    <h1 class="page-title">Thomas Heggie Heg Hog Heggerson</h1>
+    
+    <div class="content-wrapper">
+      <!-- Left side - Gallery -->
+      <div class="picture-section">
+        <div class="gallery-container">
+          <!-- Hidden radio buttons to track current slide -->
+          <input type="radio" name="gallery" id="slide1" class="gallery-radio" checked>
+          <input type="radio" name="gallery" id="slide2" class="gallery-radio">
+
+          <!-- Single Next control (contextual) -->
+          <label for="slide2" class="gallery-arrow arrow-next from1">›</label>
+          <label for="slide1" class="gallery-arrow arrow-next from2">›</label>
+
+          <!-- Slides -->
+          <div class="gallery-slides">
+            <div class="gallery-slide slide1">
+              <img src="icons/heggie.png" alt="Heggie image 1">
+            </div>
+            <div class="gallery-slide slide2">
+              <img src="icons/heggie-rvp.png" alt="Heggie image 2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side - Categories -->
+      <div class="categories-section">
+        <a href="#modal-great-ball-knowledge" class="category-box">Great Ball Knowledge</a>
+        <a href="#modal-even-listening" class="category-box">Was he even listening?</a>
+        <a href="#modal-wild-guesses" class="category-box">Wild Shouts</a>
+        <a href="#modal-funky-forfeits" class="category-box">Funky Forfeits</a>
+        <a href="#modal-general-funnies" class="category-box">General Funnies</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="modal-great-ball-knowledge" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-great">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-great" class="modal-title">Great Ball Knowledge</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-great-1">Ooo the coventry boy.</a></li>
+        <li><a href="#modal-great-2">We're taking that!</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-great-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-1-title">
+      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-great-1-title" class="modal-title">Ooo the coventry boy.</h3>
+        <h4 id="modal-great-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 29th October 2025.</p>
+        <p>In this face blindness quiz, Heggie initially doesn't know the player but pulls it out of the hat big time with his big brain knowledge.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=2467" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-great-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-2-title">
+      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-great-2-title" class="modal-title">We're taking that!</h3>
+        <h4 id="modal-great-2-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 4th February 2025.</p>
+        <p>Heggie pulls out a Missing Vowels round with this obscure Dutch league player.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/p07dJvDOz9s?start=1850" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-even-listening" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-face">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-face" class="modal-title">Was he even listening?</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-face-1">He's Georgian by the way.</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-face-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-1-title">
+      <a class="modal-back" href="#modal-even-listening" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-face-1-title" class="modal-title">He's Georgian by the way.</h3>
+        <h4 id="modal-general-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 30th July 2025.</p>
+        <p>Another Aaron hosted career path video causes carnage as the Heggie and Calum lose their marbles and Heggie fully delves into confusion.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ljKecGd7Kqk?start=1940" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-wild-guesses" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-wild">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-wild" class="modal-title">Wild Shouts</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-wild-1">Has to be West Brom.</a></li>
+        <li><a href="#modal-wild-2">About 10 years too late Heggie.</a></li>
+        <li><a href="#modal-wild-3">It could be Chicago Fire actually.</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-wild-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-1-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-1-title" class="modal-title">Has to be West Brom.</h3>
+        <h4 id="modal-wild-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 29th October 2025.</p>
+        <p>During a Face Blindness Quiz, Heggie and Jacob are certain this player HAS to have played the most for West Brom.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1766" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-wild-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-2-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-2-title" class="modal-title">About 10 years too late Heggie.</h3>
+        <h4 id="modal-wild-2-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 30th April 2025.</p>
+        <p>The boys clearly lack knowledge in other sports, in this case Cricket as Heggie plucks out a name from a decade before the question.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/SKHATK7IRa8?start=1339" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-wild-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-3-title">
+      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-wild-3-title" class="modal-title">It could be Chicago Fire actually.</h3>
+        <h4 id="modal-wild-3-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 5th June 2025.</p>
+        <p>The boys have chose the Away questions on A Question of Sport, but how is there knowledge of Basketball?!</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/UvSNgLel-Qc?start=1485" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <div id="modal-funky-forfeits" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-funky">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-funky" class="modal-title">Funky Forfeits</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-funky-1">What a red arse</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="modal-funky-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-1-title">
+      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-funky-1-title" class="modal-title">What a red arse</h3>
+        <h4 id="modal-funky-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 18th August 2023.</p>
+        <p>After this OG Football Jeopardy video, Jacob reigns supreme and gets to red arse the other lads, CHAOS ensues.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/mg3u3u9HQ_k?start=2267" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-funnies" class="modal" aria-hidden="true">
+    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-general">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <h2 id="modal-title-general" class="modal-title">General Funnies</h2>
+      <ul class="modal-list">
+        <li><a href="#modal-general-1">Pukki might have more.</a></li>
+        <li><a href="#modal-general-2">Leap of faith.</a></li>
+        <li><a href="#modal-general-3">And that's the killer.</a></li>
+        <li><a href="#modal-general-4">RKO outta nowhere. (Legend Members Only)</a></li>
+        <li><a href="#modal-general-5">Heggie, you're making him blush!</a></li>
+        <li><a href="#modal-general-6">What did you just say Heggie?</a></li>
+        <li><a href="#modal-general-7">Bark at me again I'll slap you about.</a></li>
+        <li><a href="#modal-general-8">That's gotta hurt.</a></li>
+        <li><a href="#modal-general-9">I could kiss you right now.</a></li>
+        <li><a href="#modal-general-10">Something something Titties?</a></li>
+        <li><a href="#modal-general-11">I like you G right, but...</a></li>
+        <li><a href="#modal-general-12">Get you some patter.</a></li>
+        <li><a href="#modal-general-13">Move it back a bit Aaron.</a></li>
+        <li><a href="#modal-general-14">Right, we'll go Suarez then.</a></li>
+        <li><a href="#modal-general-15">Oh no you don't.</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sub-modals for General Funnies -->
+  <div id="modal-general-1" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-1-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-1-title" class="modal-title">Pukki might have more.</h3>
+        <h4 id="modal-general-1-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 15th September 2025.</p>
+        <p>In this 2v2 viewer submission quiz, during a round where the team of Calum and Heggie think it might have something to do with Nations Top scorers, Heggie makes a wild statement regarding Pukki.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/eTgBzhOU3UM?start=1445" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-2" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-2-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-2-title" class="modal-title">Leap of faith.</h3>
+        <h4 id="modal-general-2-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 13th October 2025.</p>
+        <p>In this edition of Flatchat taskmaster, the lads must recreate a famous WC goal, Heggie takes things to new heights and shows off his prime athletic ability.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/Ow_nQrxudZs?start=749" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-general-3" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-3-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-3-title" class="modal-title">And that's the killer.</h3>
+        <h4 id="modal-general-3-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 9th November 2025.</p>
+        <p>With Aaron needing to get the correct decision on this killer tic-tac-toe episode to stop a Jacob win, Heggie decides to give him some hints towards the answer.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/_C0j0MAGd_o?start=965" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+ 
+  <div id="modal-general-4" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-4-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-4-title" class="modal-title">RKO outta nowhere.</h3>
+        <h4 id="modal-general-4-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 2nd November 2025.</p>
+        <p>In this members only video, Jacob needs to take a closer look to identify a player when Heggie embraces his inner Legend Killer Randy Orton.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/OH6SbJ_ddyw?start=1702" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>  
+  <div id="modal-general-5" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-5-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-5-title" class="modal-title">Heggie, you're making him blush!</h3>
+        <h4 id="modal-general-5-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 27th April 2025.</p>
+        <p>After making a remark about the appearance of a certain tall french man, Heggie lays back the compliments on one of the boys.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=1078" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div> 
+  <div id="modal-general-6" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-6-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-6-title" class="modal-title">What did you just say Heggie?</h3>
+        <h4 id="modal-general-6-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 8th April 2025.</p>
+        <p>During a viewer submitted quiz, the lads must tackle a football themed wordsearch, however Heggie comes out with a WILD statement.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/k5y9L_XoBz4?start=1954" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div> 
+  <div id="modal-general-7" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-7-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-7-title" class="modal-title">Bark at me again I'll slap you about.</h3>
+        <h4 id="modal-general-7-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 31st May 2023.</p>
+        <p>Aaron tries to hide the results of this BIG FAT Premier League quiz on his little notebook. After Heggie tries to sneak a peek the lads get into a scuffle and Heggie puts Aaron in his place.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/6SbU134Dkik?start=2592" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-8" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-8-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-8-title" class="modal-title">That's gotta hurt.</h3>
+        <h4 id="modal-general-8-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 1st September 2023.</p>
+        <p>Heggie shows why we should leave the goalkeeping to Aaron as he makes a vast error that results in quite the impact.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/PINaTdSft0I?start=868" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div> 
+  <div id="modal-general-9" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-9-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-9-title" class="modal-title">I could kiss you right now.</h3>
+        <h4 id="modal-general-9-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 16th April 2024.</p>
+        <p>Things get a bit spicy between Jacob and Heggie in this Who wants to be a Millionaire episode.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ycx-sXO_FUU?start=629" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-10" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-10-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-10-title" class="modal-title">Something something Titties?</h3>
+        <h4 id="modal-general-10-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 3rd May 2025.</p>
+        <p>In this football jeopardy, Heggie cracks a joke about woman's breasts and it ends up giving Aaron a brainwave with boobs on the mind.</p>
+        <p>Contributed by Tradiac.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/ybckX-VIQlg?start=2229" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-11" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-11-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-11-title" class="modal-title">I like you G right, but...</h3>
+        <h4 id="modal-general-11-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 4th February 2025.</p>
+        <p>After literally doing the WORLDS HARDEST QUIZ, Heggie has some words to say about the quiz sender.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/p07dJvDOz9s?start=1726" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-12" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-12-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-12-title" class="modal-title">Get you some patter.</h3>
+        <h4 id="modal-general-12-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 4th February 2025.</p>
+        <p>On the first day of Advent Calendar 2024 the boys are playing Tenable, Aaron tries to chirp at Heggie but he BITES back.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/fPh4TCgUeZk?start=78" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-13" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-13-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-13-title" class="modal-title">Move it back a bit Aaron.</h3>
+        <h4 id="modal-general-13-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 7th July 2025.</p>
+        <p>Another Jeopardy video gets Aaron quite excited, Heggie has to hold the poor boy back before he deafens the audience.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/DjDYni3lwWQ?start=1012" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-14" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-14-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-14-title" class="modal-title">Right, we'll go Suarez then.</h3>
+        <h4 id="modal-general-14-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 30th June 2024.</p>
+        <p>Heggie and Calum ask for Aaron's opinion on this question in Million Pound Drop but hit him with a one liner afterwards.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/AFLhClis1g4?start=1656" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div id="modal-general-15" class="modal">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-15-title">
+      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <div class="modal-left">
+        <h3 id="modal-general-15-title" class="modal-title">Oh no you don't.</h3>
+        <h4 id="modal-general-15-subtitle" class="modal-subtitle">Description:</h4>
+        <p>Released on the 28th July 2025.</p>
+        <p>At the end of this Football Jeopardy Heggie makes a remark about Aaron's current standings in the game causing massive laughs all around apart from Aaron.</p>
+      </div>
+      <div class="modal-right">
+        <div class="video-placeholder">Loading video...</div>
+        <iframe class="modal-video" src="https://www.youtube.com/embed/Qoq8dkhSSko?start=1745" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Please support the boys at all the links below.</p>
+    <div class="social-links">
+      <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.youtube.com/@FlatChatDarts" target="_blank"><img src="icons/darts.png" alt="Darts YouTube"></a>
+      <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
+      <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
+      <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>
+      <a href="https://www.threads.com/@theflatchatofficial" target="_blank"><img src="icons/threads.png" alt="Threads"></a>
+    </div>
+    <p>Site made by Darren 'Unico'</p>
+    <p>Thanks to the following members from the Members-Only Discord for top-tier flatchat moment contributions: Maule13, Tradiac, FinnAllen</p>
+  <div class="footer-random">
+      <button id="randomMomentBtn">
+        <img src="icons/randomiser.png" alt="Random Moment" />
+      </button>
+  </div>
+  </footer>
+
+<script src="scripts/modal-auto-stop-video.js"></script>
+<script src="scripts/randomMoment.js"></script>
+
+</body>
+</html>

@@ -213,19 +213,16 @@
     #slide1:checked ~ .arrow-next.from1 { display: flex; }
     #slide2:checked ~ .arrow-next.from2 { display: flex; }
 
-    /* RIGHT SIDE - CATEGORIES */
-    .categories-section {
+    .selection-section {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      /* center the category boxes vertically within the content area */
       justify-content: center;
-      /* keep the boxes full-width of the column */
       align-items: stretch;
     }
 
-    .category-box {
+    .selection-box {
       background: #25b6c4;
       color: #fff;
       padding: 20px;
@@ -237,10 +234,19 @@
       transition: all 0.3s ease;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       text-decoration: none;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
 
-    .category-box:hover {
+    .selection-box img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .selection-box:hover {
       background: #1e9aa6;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -643,410 +649,25 @@
         </div>
       </div>
 
-      <!-- Right side - Categories -->
-      <div class="categories-section">
-        <a href="#modal-great-ball-knowledge" class="category-box">Great Ball Knowledge</a>
-        <a href="#modal-even-listening" class="category-box">Was he even listening?</a>
-        <a href="#modal-wild-guesses" class="category-box">Wild Shouts</a>
-        <a href="#modal-funky-forfeits" class="category-box">Funky Forfeits</a>
-        <a href="#modal-general-funnies" class="category-box">General Funnies</a>
-      </div>
+      <div class="selection-section">
+        <a href="calum-flatchat-yt.html" class="selection-box">
+          Flatchat YouTube
+          <img src="icons/youtube.png" alt="YouTube">
+        </a>
+        
+        <div class="selection-box coming-soon">
+          Flatchat TikTok
+          <img src="icons/tiktok.png" alt="TikTok">
+          <div class="coming-soon-label">Coming Soon</div>
+        </div>
+        
+        <div class="selection-box coming-soon">
+          Flatchat Darts
+          <img src="icons/darts.png" alt="Darts">
+          <div class="coming-soon-label">Coming Soon</div>
+        </div>
     </div>
   </main>
-    <!-- CSS-only modals for each category -->
-  <div id="modal-great-ball-knowledge" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-great">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-great" class="modal-title">Great Ball Knowledge</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-great-1">Ooooo Calum Porter!!!</a></li>
-        <li><a href="#modal-great-2">A wee ping.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Sub-modals with left text and right video area -->
-  <div id="modal-great-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-1-title">
-      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-great-1-title" class="modal-title">Ooooo Calum Porter!!!</h3>
-        <h4 id="modal-great-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 15th February 2025.</p>
-        <p>In this viewers worlds hardest quiz, the lads are struggling to find the connection between these 4 clubs, until Calum thinks of this GENIUS answer.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/eXEUaWb3vjc?start=753" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-great-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-2-title">
-      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-great-2-title" class="modal-title">A wee ping.</h3>
-        <h4 id="modal-great-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 16th May 2024.</p>
-        <p>In this football among us video, Calum pulls out one of the greatest multi meaning words EVER?!?!</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tDUwiVhz1Io?start=830" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-even-listening" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-even-listening">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-even-listening" class="modal-title">Was he even listening?</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-even-listening-1">He's british you f**king idiot!</a></li>
-        <li><a href="#modal-even-listening-2">You'd need to say 100 then.</a></li>
-        <li><a href="#modal-even-listening-3">I put 2 metres.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="modal-even-listening-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-even-listening-1-title">
-      <a class="modal-back" href="#modal-even-listening" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-even-listening-1-title" class="modal-title">He's british you f**king idiot!</h3>
-        <h4 id="modal-even-listening-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 7th August 2024.</p>
-        <p>In this collab video with pitchside Tom Garratt, Calum demonstrates that his ears must belong in his backside after this wild answer.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/r-sPJ0IcywA?start=156" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-even-listening-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-even-listening-2-title">
-      <a class="modal-back" href="#modal-even-listening" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-even-listening-2-title" class="modal-title">You'd need to say 100 then.</h3>
-        <h4 id="modal-even-listening-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 21st May 2025.</p>
-        <p>Calum needs to clean the old ear holes out as he completely misunderstands this question in this viewers Football Tension.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/OhOk64qTgXo?start=550" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-even-listening-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-even-listening-3-title">
-      <a class="modal-back" href="#modal-even-listening" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-even-listening-3-title" class="modal-title">I put 2 metres.</h3>
-        <h4 id="modal-even-listening-3-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 28th May 2025.</p>
-        <p>In this Away questions round of Ultimate Football Showdown, Calum gets it completely wrong and produces a HOWLER guess.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tCS64K4lIMY?start=1055" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-wild-guesses" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-wild">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-wild" class="modal-title">Wild Shouts</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-wild-1">You're going Brazil?!</a></li>
-        <li><a href="#modal-wild-2">Why don't you pick players you know?!?!?!?!</a></li>
-        <li><a href="#modal-wild-3">That wasn't a world cup year!</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="modal-wild-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-1-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-1-title" class="modal-title">You're going Brazil?!</h3>
-        <p>Released on the 11th November 2024.</p>
-        <p>In this squadguesser challenge, Calum sees a Middlesborough goalkeeper and goes for this South American nation?!</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/FTW--kQ5q9U?start=578" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-wild-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-2-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-2-title" class="modal-title">Why don't you pick players you know?!?!?!?!</h3>
-        <p>Released on the 6th October 2023.</p>
-        <p>After having a HOWLER of a video, Jacob loses the plot after Calum gives this ridiculous answer.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/CrCLeAzhyMo?start=663" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-wild-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-3-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-3-title" class="modal-title">That wasn't a world cup year!</h3>
-        <p>Released on the 10th June 2025.</p>
-        <p>This football jeopardy gets Calum all confused and he gives this WOEFUL answer, leaving the other boys in stitches!</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/yysUQhoS0UI?start=1404" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Funky Forfeits category + sub-modals -->
-  <div id="modal-funky-forfeits" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-funky">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-funky" class="modal-title">Funky Forfeits</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-funky-1">Cher by Cher Lloyd</a></li>
-        <li><a href="#modal-funky-2">What a red arse</a></li>
-        <li><a href="#modal-funky-3">Big skinny chicken legs come on!</a></li>
-        <li><a href="#modal-funky-4">Feeling hot hot hot!!!</a></li>
-        <li><a href="#modal-funky-5">5,6,7,8</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Sub-modals for Funky Forfeits -->
-  <div id="modal-funky-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-1-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-1-title" class="modal-title">Cher by Cher Lloyd</h3>
-        <h4 id="modal-funky-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 15th March 2024.</p>
-        <p>Calum regretted losing this Killer Tic-Tac-Toe episode as the forfeit resulted in him whipping out the microphone and dusting off the vocal chords.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Z-w4-u96UU0?start=1756" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-funky-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-2-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-2-title" class="modal-title">What a red arse</h3>
-        <h4 id="modal-funky-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 18th August 2023.</p>
-        <p>After this OG Football Jeopardy video, Jacob reigns supreme and gets to red arse the other lads, CHAOS ensues.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/mg3u3u9HQ_k?start=2267" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-funky-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-3-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-3-title" class="modal-title">Big skinny chicken legs come on!</h3>
-        <h4 id="modal-funky-3-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 15th May 2023.</p>
-        <p>After losing in this OG football tenable video: Calum, Aaron and Jacob must face the forfiet, which this time is wax strips to the legs, hilarity ensues.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/S9pE1V55XPg?start=1643" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-funky-4" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-4-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-4-title" class="modal-title">Feeling hot hot hot!!!</h3>
-        <h4 id="modal-funky-4-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 7th March 2023.</p>
-        <p>After losing in this round of tic-tac-toe, Calum must face his fears and eat this spicy item.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/1ltaj6lwLAs?start=1495" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-funky-5" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-5-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-5-title" class="modal-title">5,6,7,8</h3>
-        <h4 id="modal-funky-5-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 7th June 2023.</p>
-        <p>After missing out on winning this pointless quiz, Jacob and Calum put their dancing shoes on to this viral Jason Derulo dance trend.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/YHR6TE7y530?start=1448" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-general-funnies" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-general">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-general" class="modal-title">General Funnies</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-general-1">Played against?!?!</a></li>
-        <li><a href="#modal-general-2">They're adidas.</a></li>
-        <li><a href="#modal-general-3">It's not negative 5. I know it's negative 7.</a></li>
-        <li><a href="#modal-general-4">Aaron... You need more rounds.</a></li>
-        <li><a href="#modal-general-5">Fanny's got a small one aye.</a></li>
-        <li><a href="#modal-general-6">She gets it sometimes as well.</a></li>
-        <li><a href="#modal-general-7">Ronald Weasley.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Sub-modals for General Funnies -->
-  <div id="modal-general-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-1-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-1-title" class="modal-title">Played against?!?!</h3>
-        <h4 id="modal-general-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 20th October 2025.</p>
-        <p>In this viewer quiz, Calum gets his words all mixed up producing a HILARIOUS moment.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/pBpyZNk_iE8?start=1547" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-2-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-2-title" class="modal-title">They're adidas.</h3>
-        <h4 id="modal-general-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 21st June 2024.</p>
-        <p>In this football codenames, Calum uses his environment to deduce what kit Celtic wear.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/LXkSdAuGWpY?start=1000" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-3-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-3-title" class="modal-title">It's not negative 5. I know it's negative 7.</h3>
-        <h4 id="modal-general-3-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 24th December 2024.</p>
-        <p>In this BIG FAT QUIZ OF THE YEAR, after a HONKING answer by Aaron, Calum goes on the wind up and gets Aaron to have a breakdown with this one.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/7IbakLo2TpI?start=2350" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-4" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-4-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-4-title" class="modal-title">Aaron... You need more rounds.</h3>
-        <h4 id="modal-general-4-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 22nd October 2024.</p>
-        <p>In this career path video, Aaron is falling behind the other lads in the scoreboard, Calum makes sure to hit him right where it hurts.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/dqECWQ4Zpn4?start=1286" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-5" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-5-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-5-title" class="modal-title">Fanny's got a small one aye.</h3>
-        <h4 id="modal-general-5-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 21st February 2025.</p>
-        <p>The boys absolutely lose their minds on the connection wall, producing some HILARIOUS ONE LINERS.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/gPizEnhXvPs?start=1168" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-general-6" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-6-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-6-title" class="modal-title">She gets it sometimes as well.</h3>
-        <h4 id="modal-general-6-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 13th September 2023.</p>
-        <p>The boys sit down for a Q&A in this one and while talking over their living arrangements, Calum makes a crude comment about Aaron's home life.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Jqnk4wYaaUI?start=134" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-7" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-7-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-7-title" class="modal-title">Ronald Weasley.</h3>
-        <h4 id="modal-general-7-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 4th November 2024.</p>
-        <p>Time for another Tenable and Calum gets a giggle out of the boys for this one liner.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/oTTOm_jicOw?start=1001" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <p>Please support the boys at all the links below.</p>
@@ -1054,6 +675,7 @@
       <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
       <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
       <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.youtube.com/@FlatChatDarts" target="_blank"><img src="icons/darts.png" alt="Darts YouTube"></a>
       <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
       <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
       <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>

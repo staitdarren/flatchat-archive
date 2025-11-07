@@ -213,19 +213,16 @@
     #slide1:checked ~ .arrow-next.from1 { display: flex; }
     #slide2:checked ~ .arrow-next.from2 { display: flex; }
 
-    /* RIGHT SIDE - CATEGORIES */
-    .categories-section {
+    .selection-section {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      /* center the category boxes vertically within the content area */
       justify-content: center;
-      /* keep the boxes full-width of the column */
       align-items: stretch;
     }
 
-    .category-box {
+    .selection-box {
       background: #25b6c4;
       color: #fff;
       padding: 20px;
@@ -237,10 +234,19 @@
       transition: all 0.3s ease;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       text-decoration: none;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
 
-    .category-box:hover {
+    .selection-box img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .selection-box:hover {
       background: #1e9aa6;
       transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -643,444 +649,25 @@
         </div>
       </div>
 
-      <!-- Right side - Categories -->
-      <div class="categories-section">
-        <a href="#modal-great-ball-knowledge" class="category-box">Great Ball Knowledge</a>
-        <a href="#modal-even-listening" class="category-box">Was he even listening?</a>
-        <a href="#modal-wild-guesses" class="category-box">Wild Shouts</a>
-        <a href="#modal-funky-forfeits" class="category-box">Funky Forfeits</a>
-        <a href="#modal-general-funnies" class="category-box">General Funnies</a>
-      </div>
+      <div class="selection-section">
+        <a href="heggie-flatchat-yt.html" class="selection-box">
+          Flatchat YouTube
+          <img src="icons/youtube.png" alt="YouTube">
+        </a>
+        
+        <div class="selection-box coming-soon">
+          Flatchat TikTok
+          <img src="icons/tiktok.png" alt="TikTok">
+          <div class="coming-soon-label">Coming Soon</div>
+        </div>
+        
+        <div class="selection-box coming-soon">
+          Flatchat Darts
+          <img src="icons/darts.png" alt="Darts">
+          <div class="coming-soon-label">Coming Soon</div>
+        </div>
     </div>
   </main>
-
-  <div id="modal-great-ball-knowledge" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-great">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-great" class="modal-title">Great Ball Knowledge</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-great-1">Ooo the coventry boy.</a></li>
-        <li><a href="#modal-great-2">We're taking that!</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="modal-great-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-1-title">
-      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-great-1-title" class="modal-title">Ooo the coventry boy.</h3>
-        <h4 id="modal-great-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 29th October 2025.</p>
-        <p>In this face blindness quiz, Heggie initially doesn't know the player but pulls it out of the hat big time with his big brain knowledge.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=2467" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-great-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-great-2-title">
-      <a class="modal-back" href="#modal-great-ball-knowledge" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-great-2-title" class="modal-title">We're taking that!</h3>
-        <h4 id="modal-great-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 4th February 2025.</p>
-        <p>Heggie pulls out a Missing Vowels round with this obscure Dutch league player.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/p07dJvDOz9s?start=1850" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-even-listening" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-face">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-face" class="modal-title">Was he even listening?</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-face-1">He's Georgian by the way.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="modal-face-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-face-1-title">
-      <a class="modal-back" href="#modal-even-listening" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-face-1-title" class="modal-title">He's Georgian by the way.</h3>
-        <h4 id="modal-general-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 30th July 2025.</p>
-        <p>Another Aaron hosted career path video causes carnage as the Heggie and Calum lose their marbles and Heggie fully delves into confusion.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ljKecGd7Kqk?start=1940" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-wild-guesses" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-wild">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-wild" class="modal-title">Wild Shouts</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-wild-1">Has to be West Brom.</a></li>
-        <li><a href="#modal-wild-2">About 10 years too late Heggie.</a></li>
-        <li><a href="#modal-wild-3">It could be Chicago Fire actually.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="modal-wild-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-1-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-1-title" class="modal-title">Has to be West Brom.</h3>
-        <h4 id="modal-wild-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 29th October 2025.</p>
-        <p>During a Face Blindness Quiz, Heggie and Jacob are certain this player HAS to have played the most for West Brom.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/tI2utumZMX8?start=1766" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-wild-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-2-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-2-title" class="modal-title">About 10 years too late Heggie.</h3>
-        <h4 id="modal-wild-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 30th April 2025.</p>
-        <p>The boys clearly lack knowledge in other sports, in this case Cricket as Heggie plucks out a name from a decade before the question.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/SKHATK7IRa8?start=1339" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-wild-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-wild-3-title">
-      <a class="modal-back" href="#modal-wild-guesses" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-wild-3-title" class="modal-title">It could be Chicago Fire actually.</h3>
-        <h4 id="modal-wild-3-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 5th June 2025.</p>
-        <p>The boys have chose the Away questions on A Question of Sport, but how is there knowledge of Basketball?!</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/UvSNgLel-Qc?start=1485" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  
-  <div id="modal-funky-forfeits" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-funky">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-funky" class="modal-title">Funky Forfeits</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-funky-1">What a red arse</a></li>
-      </ul>
-    </div>
-  </div>
-  <div id="modal-funky-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-funky-1-title">
-      <a class="modal-back" href="#modal-funky-forfeits" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-funky-1-title" class="modal-title">What a red arse</h3>
-        <h4 id="modal-funky-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 18th August 2023.</p>
-        <p>After this OG Football Jeopardy video, Jacob reigns supreme and gets to red arse the other lads, CHAOS ensues.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/mg3u3u9HQ_k?start=2267" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-general-funnies" class="modal" aria-hidden="true">
-    <div class="modal-inner modal-centered" role="dialog" aria-modal="true" aria-labelledby="modal-title-general">
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <h2 id="modal-title-general" class="modal-title">General Funnies</h2>
-      <ul class="modal-list">
-        <li><a href="#modal-general-1">Pukki might have more.</a></li>
-        <li><a href="#modal-general-2">Leap of faith.</a></li>
-        <li><a href="#modal-general-3">And that's the killer.</a></li>
-        <li><a href="#modal-general-4">RKO outta nowhere. (Legend Members Only)</a></li>
-        <li><a href="#modal-general-5">Heggie, you're making him blush!</a></li>
-        <li><a href="#modal-general-6">What did you just say Heggie?</a></li>
-        <li><a href="#modal-general-7">Bark at me again I'll slap you about.</a></li>
-        <li><a href="#modal-general-8">That's gotta hurt.</a></li>
-        <li><a href="#modal-general-9">I could kiss you right now.</a></li>
-        <li><a href="#modal-general-10">Something something Titties?</a></li>
-        <li><a href="#modal-general-11">I like you G right, but...</a></li>
-        <li><a href="#modal-general-12">Get you some patter.</a></li>
-        <li><a href="#modal-general-13">Move it back a bit Aaron.</a></li>
-        <li><a href="#modal-general-14">Right, we'll go Suarez then.</a></li>
-        <li><a href="#modal-general-15">Oh no you don't.</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Sub-modals for General Funnies -->
-  <div id="modal-general-1" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-1-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-1-title" class="modal-title">Pukki might have more.</h3>
-        <h4 id="modal-general-1-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 15th September 2025.</p>
-        <p>In this 2v2 viewer submission quiz, during a round where the team of Calum and Heggie think it might have something to do with Nations Top scorers, Heggie makes a wild statement regarding Pukki.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/eTgBzhOU3UM?start=1445" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-general-2" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-2-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-2-title" class="modal-title">Leap of faith.</h3>
-        <h4 id="modal-general-2-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 13th October 2025.</p>
-        <p>In this edition of Flatchat taskmaster, the lads must recreate a famous WC goal, Heggie takes things to new heights and shows off his prime athletic ability.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Ow_nQrxudZs?start=749" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal-general-3" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-3-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-3-title" class="modal-title">And that's the killer.</h3>
-        <h4 id="modal-general-3-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 9th November 2025.</p>
-        <p>With Aaron needing to get the correct decision on this killer tic-tac-toe episode to stop a Jacob win, Heggie decides to give him some hints towards the answer.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/_C0j0MAGd_o?start=965" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
- 
-  <div id="modal-general-4" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-4-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-4-title" class="modal-title">RKO outta nowhere.</h3>
-        <h4 id="modal-general-4-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 2nd November 2025.</p>
-        <p>In this members only video, Jacob needs to take a closer look to identify a player when Heggie embraces his inner Legend Killer Randy Orton.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/OH6SbJ_ddyw?start=1702" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>  
-  <div id="modal-general-5" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-5-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-5-title" class="modal-title">Heggie, you're making him blush!</h3>
-        <h4 id="modal-general-5-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 27th April 2025.</p>
-        <p>After making a remark about the appearance of a certain tall french man, Heggie lays back the compliments on one of the boys.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/IWYo_nmsiwU?start=1078" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div> 
-  <div id="modal-general-6" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-6-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-6-title" class="modal-title">What did you just say Heggie?</h3>
-        <h4 id="modal-general-6-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 8th April 2025.</p>
-        <p>During a viewer submitted quiz, the lads must tackle a football themed wordsearch, however Heggie comes out with a WILD statement.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/k5y9L_XoBz4?start=1954" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div> 
-  <div id="modal-general-7" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-7-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-7-title" class="modal-title">Bark at me again I'll slap you about.</h3>
-        <h4 id="modal-general-7-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 31st May 2023.</p>
-        <p>Aaron tries to hide the results of this BIG FAT Premier League quiz on his little notebook. After Heggie tries to sneak a peek the lads get into a scuffle and Heggie puts Aaron in his place.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/6SbU134Dkik?start=2592" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-8" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-8-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-8-title" class="modal-title">That's gotta hurt.</h3>
-        <h4 id="modal-general-8-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 1st September 2023.</p>
-        <p>Heggie shows why we should leave the goalkeeping to Aaron as he makes a vast error that results in quite the impact.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/PINaTdSft0I?start=868" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div> 
-  <div id="modal-general-9" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-9-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-9-title" class="modal-title">I could kiss you right now.</h3>
-        <h4 id="modal-general-9-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 16th April 2024.</p>
-        <p>Things get a bit spicy between Jacob and Heggie in this Who wants to be a Millionaire episode.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ycx-sXO_FUU?start=629" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-10" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-10-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-10-title" class="modal-title">Something something Titties?</h3>
-        <h4 id="modal-general-10-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 3rd May 2025.</p>
-        <p>In this football jeopardy, Heggie cracks a joke about woman's breasts and it ends up giving Aaron a brainwave with boobs on the mind.</p>
-        <p>Contributed by Tradiac.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/ybckX-VIQlg?start=2229" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-11" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-11-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-11-title" class="modal-title">I like you G right, but...</h3>
-        <h4 id="modal-general-11-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 4th February 2025.</p>
-        <p>After literally doing the WORLDS HARDEST QUIZ, Heggie has some words to say about the quiz sender.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/p07dJvDOz9s?start=1726" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-12" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-12-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-12-title" class="modal-title">Get you some patter.</h3>
-        <h4 id="modal-general-12-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 4th February 2025.</p>
-        <p>On the first day of Advent Calendar 2024 the boys are playing Tenable, Aaron tries to chirp at Heggie but he BITES back.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/fPh4TCgUeZk?start=78" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-13" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-13-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-13-title" class="modal-title">Move it back a bit Aaron.</h3>
-        <h4 id="modal-general-13-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 7th July 2025.</p>
-        <p>Another Jeopardy video gets Aaron quite excited, Heggie has to hold the poor boy back before he deafens the audience.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/DjDYni3lwWQ?start=1012" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-14" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-14-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-14-title" class="modal-title">Right, we'll go Suarez then.</h3>
-        <h4 id="modal-general-14-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 30th June 2024.</p>
-        <p>Heggie and Calum ask for Aaron's opinion on this question in Million Pound Drop but hit him with a one liner afterwards.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/AFLhClis1g4?start=1656" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-  <div id="modal-general-15" class="modal">
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-general-15-title">
-      <a class="modal-back" href="#modal-general-funnies" aria-label="Back">← Back</a>
-      <a class="modal-close" href="#" aria-label="Close">×</a>
-      <div class="modal-left">
-        <h3 id="modal-general-15-title" class="modal-title">Oh no you don't.</h3>
-        <h4 id="modal-general-15-subtitle" class="modal-subtitle">Description:</h4>
-        <p>Released on the 28th July 2025.</p>
-        <p>At the end of this Football Jeopardy Heggie makes a remark about Aaron's current standings in the game causing massive laughs all around apart from Aaron.</p>
-      </div>
-      <div class="modal-right">
-        <div class="video-placeholder">Loading video...</div>
-        <iframe class="modal-video" src="https://www.youtube.com/embed/Qoq8dkhSSko?start=1745" title="Video placeholder" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <p>Please support the boys at all the links below.</p>
@@ -1088,6 +675,7 @@
       <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
       <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
       <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.youtube.com/@FlatChatDarts" target="_blank"><img src="icons/darts.png" alt="Darts YouTube"></a>
       <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
       <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
       <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>
