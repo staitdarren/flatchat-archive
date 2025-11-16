@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Archive</title>
+  <link rel="icon" type="image/x-icon" href="icons/flatchat-small.webp">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* === copied base styles from aaron-flatchat-yt.html === */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #25b6c4;
+      color: #fff;
+      padding: 8px 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header-logo {
+      max-width: 520px;
+      height: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .header-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+    nav a:hover { color: #f2b632; }
+
+    main {
+      flex: 1;
+      width: 67.5%;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #25b6c4;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #25b6c4;
+    }
+
+    /* accordion month boxes */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    details {
+      background: #e8f4f6;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    summary {
+      background: #25b6c4;
+      color: #fff;
+      cursor: pointer;
+      padding: 16px 20px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      user-select: none;
+      list-style: none;
+    }
+    details[open] summary {
+      background: #1e9aa6;
+    }
+    summary::marker { display: none; }
+    .entries {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 15px 20px;
+      background: #fdfdfd;
+    }
+    .entry-link {
+      display: block;
+      background: #f3f7f8;
+      color: #114047;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .entry-link:hover {
+      background: #e8f4f6;
+      transform: translateY(-2px);
+    }
+
+    /* reuse existing modal styles from your site */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease-in-out;
+      z-index: 1200;
+    }
+    .modal:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-inner {
+      background: #fff;
+      border-radius: 10px;
+      width: min(990px, 96%);
+      max-height: 95vh;
+      overflow: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      padding: 18px 20px;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 220ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .modal:target .modal-inner { transform: translateY(0); }
+    .modal-close, .modal-back {
+      position: absolute;
+      top: 12px;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+    .modal-close { right: 12px; color: #666; }
+    .modal-back { left: 12px; color: #114047; font-weight: 700; }
+    .modal-title {
+      font-size: 1.4rem;
+      color: #25b6c4;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 10px;
+    }
+    .modal-left p {
+      text-align: center;
+    }
+
+    footer {
+      background-color: #25b6c4;
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html">
+        <img src="icons/flatchat_banner.jpg" alt="Flatchat Archive Logo" class="header-logo" />
+      </a>
+      <nav>
+        <a href="aaron.html">Aaron 'The Goat' Turnbull</a>
+        <a href="heggie.html">Heggie 'The Hog' Heggerson</a>
+        <a href="calum.html">Calum 'The Lobster' Porter</a>
+        <a href="jacob.html">Jacob 'Speccy' Murray</a>
+      </nav>
+    </div>
+  </header>
+
+  <header style="text-align:center;">
+    This is a fan site made with the purpose of collating funny and iconic moments for the benefit of other flatchat fans. Click through the lads profiles to find their best moments.
+  </header>
+
+  <main>
+    <h1 class="page-title">Data Archive</h1>
+
+    <div class="accordion">
+      <details>
+        <summary>November 2025</summary>
+        <div class="entries">
+          <a href="#modal-12-11-2025-test" class="entry-link">12/11/2025 - Test Entry A</a>
+          <a href="#modal-10-11-2025-test" class="entry-link">10/11/2025 - Test Entry B</a>
+          <a href="#modal-02-11-2025-test" class="entry-link">02/11/2025 - Test Entry C</a>
+        </div>
+      </details>
+
+      <details>
+        <summary>October 2025</summary>
+        <div class="entries">
+          <a href="#modal-28-10-2025-test" class="entry-link">28/10/2025 - Test Entry D</a>
+          <a href="#modal-15-10-2025-test" class="entry-link">15/10/2025 - Test Entry E</a>
+        </div>
+      </details>
+
+      <details>
+        <summary>September 2025</summary>
+        <div class="entries">
+          <a href="#modal-04-09-2025-test" class="entry-link">04/09/2025 - Test Entry F</a>
+        </div>
+      </details>
+    </div>
+  </main>
+
+  <!-- Modals -->
+  <div id="modal-12-11-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">12/11/2025 - Test Entry A</h3>
+      <div class="modal-left">
+        <p>Placeholder data or video embed could go here for this test entry.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-10-11-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">10/11/2025 - Test Entry B</h3>
+      <div class="modal-left">
+        <p>Another example entry for testing purposes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-02-11-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">02/11/2025 - Test Entry C</h3>
+      <div class="modal-left">
+        <p>More placeholder text here.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-28-10-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">28/10/2025 - Test Entry D</h3>
+      <div class="modal-left">
+        <p>Sample entry under October 2025.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-15-10-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">15/10/2025 - Test Entry E</h3>
+      <div class="modal-left">
+        <p>Placeholder content for October entry.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-04-09-2025-test" class="modal">
+    <div class="modal-inner">
+      <a href="#" class="modal-close">×</a>
+      <h3 class="modal-title">04/09/2025 - Test Entry F</h3>
+      <div class="modal-left">
+        <p>Sample content for September entry.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Please support the boys at all the links below.</p>
+    <div class="social-links">
+      <a href="https://www.tiktok.com/@theflatchat" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/theflatchatofficial/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@theflatchat" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+      <a href="https://www.youtube.com/@FlatChatDarts" target="_blank"><img src="icons/darts.png" alt="Darts YouTube"></a>
+      <a href="https://www.thesoccershopdirect.co.uk/product-category/the-flat-chat/" target="_blank"><img src="icons/merch.png" alt="Merch"></a>
+      <a href="https://www.cameo.com/theflatchat" target="_blank"><img src="icons/cameo.png" alt="Cameo"></a>
+      <a href="https://x.com/theflatchatx" target="_blank"><img src="icons/x.png" alt="X"></a>
+      <a href="https://www.threads.com/@theflatchatofficial" target="_blank"><img src="icons/threads.png" alt="Threads"></a>
+    </div>
+    <p>Site made by Darren 'Unico'</p>
+    <p>Thanks to the following members from the Members-Only Discord for top-tier flatchat moment contributions: Maule13, Tradiac, FinnAllen</p>
+  <div class="footer-random">
+      <button id="randomMomentBtn">
+        <img src="icons/randomiser.png" alt="Random Moment" />
+      </button>
+  </div>
+  </footer>
+
+<script src="scripts/modal-auto-stop-video.js"></script>
+<script src="scripts/randomMoment.js"></script>
+
+</body>
+</html>
