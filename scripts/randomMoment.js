@@ -47,6 +47,8 @@ if (randomMomentBtn) {
       "aaron-flatchat-yt.html#modal-wild-28", "aaron-flatchat-yt.html#modal-wild-29", "aaron-flatchat-yt.html#modal-wild-30",
       "aaron-flatchat-yt.html#modal-wild-31", "aaron-flatchat-yt.html#modal-wild-32", "aaron-flatchat-yt.html#modal-wild-33",
       "aaron-flatchat-yt.html#modal-wild-34",
+
+      "aaron.html#modal-darts-1", "aaron.html#modal-darts-2", "aaron.html#modal-darts-3",
        
       // --- heggie-flatchat-yt ---
       "heggie-flatchat-yt.html#modal-funky-1",
